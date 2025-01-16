@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+:root {
+    --primary: #ff6b6b;
+    --secondary: #4ecdc4;
+    --dark: #2c3e50;
+    --light: #f7f7f7;
+}
+
+.navbar {
+    background-color: var(--dark) !important;
+}
+
+.navbar-brand, .nav-link {
+    color: var(--light) !important;
+}
+
+.nav-link:hover {
+    color: var(--primary) !important;
+}

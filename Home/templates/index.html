@@ -1,0 +1,43 @@
+{% extends 'includes/base.html'%}
+{% load static %}
+
+{% block title %}
+Campus Bites - College Cafeteria
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href={% static "css/index.css" %}>
+    {% endblock %}
+
+
+{%block content%}
+    <section class="hero">
+        <div class="floating-items" id="floatingItems"></div>
+        <div class="hero-content">
+            <h1>Welcome to Campus Bites</h1>
+            <p>Skip the lines, order ahead, and enjoy delicious meals from your college cafeteria. Fresh, fast, and convenient!</p>
+            <button class="cta-button">Order Now</button>
+            <div class="menu-preview">
+                <div class="menu-item">
+                    <img src="/api/placeholder/200/150" alt="Today's Special">
+                    <h3>Today's Special</h3>
+                    <p>Grilled Chicken Bowl</p>
+                </div>
+                <div class="menu-item">
+                    <img src="/api/placeholder/200/150" alt="Student Favorite">
+                    <h3>Student Favorite</h3>
+                    <p>Veggie Buddha Bowl</p>
+                </div>
+                <div class="menu-item">
+                    <img src="/api/placeholder/200/150" alt="New Addition">
+                    <h3>New Addition</h3>
+                    <p>Poke Bowl</p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+<script src={% static 'js/index.js' %}></script>
+{% endblock %}

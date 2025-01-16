@@ -1,0 +1,135 @@
+{% extends "includes/base.html"%}
+{% load static %}
+{% block title %}
+Campus bites - Menu
+{% endblock %}
+
+{% block css%}
+<link rel="stylesheet" href={% static "css/menu.css" %}>
+{% endblock %}
+
+{% block content %}
+<div class="floating-items" id="floatingItems"></div>
+<div class="page-background">
+    <!-- Filters -->
+    <div class="bg-white shadow-sm py-3 mb-4">
+        <div class="container">
+            <div class="filter-scroll pb-2">
+                <button class="btn filter-btn active">All Categories</button>
+                <button class="btn filter-btn">Main Course</button>
+                <button class="btn filter-btn">Breakfast</button>
+                <button class="btn filter-btn">Snacks</button>
+                <button class="btn filter-btn">Beverages</button>
+                <button class="btn filter-btn">Desserts</button>
+                <button class="btn filter-btn">Healthy Options</button>
+                <button class="btn filter-btn">Quick Bites</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories Grid -->
+    <div class="container pb-5">
+        <div class="row g-4">
+            <!-- Main Course -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Main Course">
+                    <div class="card-body">
+                        <h5 class="card-title">Main Course</h5>
+                        <p class="card-text">Hearty meals including rice bowls, pasta, and traditional favorites.</p>
+                        <div class="category-stats d-flex justify-content-between mb-3">
+                            <span><i class="fas fa-utensils me-2"></i>15 Items</span>
+                            <span><i class="fas fa-tag me-2"></i>From $8.99</span>
+                        </div>
+                        <button class="btn btn-view-category text-white w-100">View Items</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Breakfast -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Breakfast">
+                    <div class="card-body">
+                        <h5 class="card-title">Breakfast</h5>
+                        <p class="card-text">Start your day right with our selection of breakfast classics.</p>
+                        <div class="category-stats d-flex justify-content-between mb-3">
+                            <span><i class="fas fa-coffee me-2"></i>12 Items</span>
+                            <span><i class="fas fa-tag me-2"></i>From $5.99</span>
+                        </div>
+                        <button class="btn btn-view-category text-white w-100">View Items</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Snacks -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Snacks">
+                    <div class="card-body">
+                        <h5 class="card-title">Snacks</h5>
+                        <p class="card-text">Quick bites and treats perfect for between classes.</p>
+                        <div class="category-stats d-flex justify-content-between mb-3">
+                            <span><i class="fas fa-cookie-bite me-2"></i>20 Items</span>
+                            <span><i class="fas fa-tag me-2"></i>From $3.99</span>
+                        </div>
+                        <button class="btn btn-view-category text-white w-100">View Items</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beverages -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Beverages">
+                    <div class="card-body">
+                        <h5 class="card-title">Beverages</h5>
+                        <p class="card-text">Refreshing drinks, coffee, tea, and smoothies.</p>
+                        <div class="category-stats d-flex justify-content-between mb-3">
+                            <span><i class="fas fa-glass-cheers me-2"></i>18 Items</span>
+                            <span><i class="fas fa-tag me-2"></i>From $2.99</span>
+                        </div>
+                        <button class="btn btn-view-category text-white w-100">View Items</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desserts -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Desserts">
+                    <div class="card-body">
+                        <h5 class="card-title">Desserts</h5>
+                        <p class="card-text">Sweet treats to satisfy your cravings.</p>
+                        <div class="category-stats d-flex justify-content-between mb-3">
+                            <span><i class="fas fa-ice-cream me-2"></i>10 Items</span>
+                            <span><i class="fas fa-tag me-2"></i>From $4.99</span>
+                        </div>
+                        <button class="btn btn-view-category text-white w-100">View Items</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Healthy Options -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <img src="/api/placeholder/400/200" class="card-img-top" alt="Healthy Options">
+                    <div class="card-body">
+                        <h5 class="card-title">Healthy Options</h5>
+                        <p class="card-text">Nutritious and delicious meals for the health-conscious.</p>
+                        <div class="category-stats d-flex justify-content-between mb-3">
+                            <span><i class="fas fa-carrot me-2"></i>14 Items</span>
+                            <span><i class="fas fa-tag me-2"></i>From $7.99</span>
+                        </div>
+                        <button class="btn btn-view-category text-white w-100">View Items</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script src={% static "js/menu.js" %}></script>
+{% endblock %}

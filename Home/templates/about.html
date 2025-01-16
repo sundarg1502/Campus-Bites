@@ -1,0 +1,77 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+
+{% block title %}
+Campus Bites | About
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href={% static "css/about.css" %}>
+{% endblock %}
+
+{% block content %}
+<section id="about" class="page-section">
+    <div class="container">
+        <h1 class="section-title">About Campus Bites</h1>
+        <div class="about-content">
+            <div class="about-image">
+                <img src="#" alt="Campus Bites Cafeteria">
+            </div>
+            <div class="about-text">
+                <h3>Nourishing Minds, Fueling Future</h3>
+                <p>Founded in 2015, Campus Bites has revolutionized the college dining experience by combining convenience with quality. Our mission is to provide students, faculty, and staff with nutritious, delicious meals that fuel their academic journey.</p>
+                <p>We understand the demanding schedule of college life, which is why we've created an innovative ordering system that lets you skip the lines and enjoy your meals on your terms. Our team of passionate chefs crafts each dish with care, using fresh, locally-sourced ingredients whenever possible.</p>
+                <p>Beyond just serving food, we're committed to sustainability, utilizing eco-friendly packaging and implementing waste reduction programs across our operations.</p>
+            </div>
+        </div>
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">5000+</div>
+                <div class="stat-label">Daily Meals Served</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Student Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24</div>
+                <div class="stat-label">Expert Chefs</div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block script %}
+<script>
+    // Animation for page elements
+    gsap.to('.section-title', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        scrollTrigger: {
+            trigger: '.section-title'
+        }
+    });
+
+    gsap.to('.about-content', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.3,
+        scrollTrigger: {
+            trigger: '.about-content'
+        }
+    });
+
+    gsap.to('.stats', {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        delay: 0.5,
+        scrollTrigger: {
+            trigger: '.stats'
+        }
+    });
+</script>
+{% endblock %}

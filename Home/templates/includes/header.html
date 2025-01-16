@@ -10,14 +10,30 @@
                     <a class="nav-link" href={% url "Home:index"%}><i class="bi bi-house-door"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'Home:menu' %}"><i class="bi bi-menu-button-wide"></i> Menu</a>
+                    <a class="nav-link active" href={% url "Home:about" %}><i class="bi bi-info-circle"></i> About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-cart3"></i> Order</a>
+                    <a class="nav-link" href="#"><i class="bi bi-menu-button-wide"></i> Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-cart3"></i> Orders</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#"><i class="bi bi-person-circle"></i> Profile</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#"><i class="bi bi-person-plus"></i> Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href={% url "Home:contact" %}><i class="bi bi-envelope"></i> Contact</a>
+                </li>
+
             </ul>
         </div>
     </div>

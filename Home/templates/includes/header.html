@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#"><i class="bi bi-menu-button-wide"></i> Menu</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                    <a class="nav-link active" href={% url "Home:login" %}><i class="bi bi-box-arrow-in-right"></i> Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#"><i class="bi bi-box-arrow-right"></i> Logout</a>
@@ -28,7 +28,7 @@
                     <a class="nav-link active" href="#"><i class="bi bi-person-circle"></i> Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="bi bi-person-plus"></i> Register</a>
+                    <a class="nav-link active" href={% url "Home:register" %}><i class="bi bi-person-plus"></i> Register</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href={% url "Home:contact" %}><i class="bi bi-envelope"></i> Contact</a>

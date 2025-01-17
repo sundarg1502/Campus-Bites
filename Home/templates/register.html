@@ -1,0 +1,115 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+
+{% block title %}
+Campus Bites | Register Page
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href={% static "css/register.css" %}>
+{% endblock %}
+
+{% block content %}
+<div class="page-background">
+    <div id="floatingFood" class="position-absolute w-100 h-100"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="auth-card p-4 p-md-5">
+                    <h2 class="auth-title text-center mb-4">Create Account</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="first_name" name="first_name" 
+                                class="form-control {% if form.errors.first_name %}is-invalid{% endif %}" 
+                                placeholder="Enter your full name" value="{{form.first_name.value|default:''}}">
+                            {% if form.errors.first_name %}
+                            <div class="invalid-feedback">
+                                {{form.errors.first_name}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">User Name</label>
+                            <input type="text" name="username" 
+                                class="form-control {% if form.errors.username %}is-invalid{% endif %}" 
+                                placeholder="Enter User Name" value="{{form.username.value|default:""}}">
+                            {% if form.errors.username %}
+                            <div class="invalid-feedback">
+                                {{form.errors.username}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" name="email" 
+                                class="form-control {% if form.errors.email %}is-invalid{% endif %}" 
+                                placeholder="Enter your email" value="{{form.email.value|default:""}}">
+                            {% if form.errors.email %}
+                            <div class="invalid-feedback">
+                                {{form.errors.email}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" 
+                                class="form-control {% if form.errors.password %}is-invalid{% endif %}" 
+                                placeholder="Create a password" value="{{form.password.value|default:""}}">
+                            {% if form.errors.password %}
+                            <div class="invalid-feedback">
+                                {{form.errors.password}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Confirm Password</label>
+                            <input type="password" name="password2" 
+                                class="form-control {% if form.errors.password2 %}is-invalid{% endif %}" 
+                                placeholder="Confirm your password" value="{{form.password2.value|default:""}}">
+                            {% if form.errors.password2 %}
+                            <div class="invalid-feedback">
+                                {{form.errors.password2}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {% for error in form.non_field_errors %}
+                                {{ error }}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="agreeTerms" name="terms">
+                            <label class="form-check-label" for="agreeTerms">
+                                I agree to the Terms & Conditions
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom w-100 py-2 mb-3">Create Account</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <p class="mb-0">Already have an account? <a href="#" class="text-decoration-none">Sign in</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    gsap.to('.auth-card, .error-page', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+    });
+    
+</script>
+{% endblock %}

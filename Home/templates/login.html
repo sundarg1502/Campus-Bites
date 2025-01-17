@@ -1,0 +1,89 @@
+{% extends 'includes/base.html' %}
+{% load static %}
+
+{% block title %}
+Campus Bites | Login Page
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href={% static "css/login.css" %}>
+{% endblock %}
+
+{% block content %}
+<div class="page-background">
+    <div id="floatingFood" class="position-absolute w-100 h-100"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="auth-card p-4 p-md-5">
+                    <h2 class="auth-title text-center mb-4">Welcome Back!</h2>
+                    {% if form.non_field_errors %}
+                    <div class="alert alert-danger" role="alert">
+                        {% for error in form.non_field_errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% include "includes/messages.html" %}
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Username</label>
+                            <input type="text" name="username" class="form-control" placeholder="Enter your username" value="{{form.username.value|default:""}}">
+                            {% if form.errors.username %}
+                            <div class="invalid-feedback">
+                                {{form.errors.username}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Enter your password" value="{{form.password.value|default:""}}">
+                            {% if form.errors.password %}
+                            <div class="invalid-feedback">
+                                {{form.errors.password}}
+                            </div>
+                            {% endif %}
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary-custom w-100 py-2 mb-3">Sign In</button>
+                        <div class="text-center">
+                            <a href="#" class="text-decoration-none">Forgot password?</a>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p class="text-muted">Or sign in with</p>
+                        <div class="d-flex justify-content-center gap-2">
+                            <button class="btn social-login-btn px-4">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="btn social-login-btn px-4">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="btn social-login-btn px-4">
+                                <i class="fab fa-apple"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    gsap.to('.auth-card, .error-page', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out"
+    });
+    
+</script>
+{% endblock %}

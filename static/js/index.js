@@ -16,11 +16,12 @@ gsap.to('.cta-button', {
     opacity: 1,
     y: 0,
     duration: 1,
-    delay: 0.9
+    delay: 2.13
 });
 
-gsap.to('.menu-preview', {
+gsap.to('.mansonary-grid', {
     opacity: 1,
+    y: 0,
     duration: 1,
-    delay: 1.1
+    delay: 0.11
 });

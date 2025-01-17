@@ -11,7 +11,7 @@ def getFileName(instance, filename):
         folder = 'Others'
     date = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
     new_filename = "%s%s"%(date,filename)
-    return os.path.join(f'images/{folder}/',new_filename)
+    return os.path.join(f'static/images/{folder}/',new_filename)
 
 class Catagory(models.Model):
     name = models.CharField(max_length=25)
@@ -21,6 +21,20 @@ class Catagory(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name
+
+class NutritionalInfo(models.Model):
+    name = models.CharField(max_length=35)
+    calories = models.CharField(max_length=15,null=True,blank=True)
+    carbs = models.CharField(max_length=15,null=True,blank=True)
+    proteins = models.CharField(max_length=15,null=True,blank=True)
+    fats = models.CharField(max_length=15,null=True,blank=True)
+    cholesterol = models.CharField(max_length=15,null=True,blank=True)
+
+    def __str__(self):
+        return self.name
+    
 class Product(models.Model):
     name = models.CharField(max_length=25)
     description = models.TextField()
@@ -32,11 +46,10 @@ class Product(models.Model):
     discount_price = models.DecimalField(max_digits=4,decimal_places=2)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
+    catagory = models.ForeignKey(Catagory,on_delete=models.CASCADE)
+    nutritionalinfo = models.ForeignKey(NutritionalInfo,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
     
 
-class NutritionalInfo(models.Model):
-    calories = models.CharField(max_length=15,null=True,blank=True)
-    carbs = models.CharField(max_length=15,null=True,blank=True)
-    proteins = models.CharField(max_length=15,null=True,blank=True)
-    fats = models.CharField(max_length=15,null=True,blank=True)
-    cholesterol = models.CharField(max_length=15,null=True,blank=True)

@@ -2,10 +2,12 @@ from django.shortcuts import render,redirect
 from Home.forms import *
 from django.contrib import messages
 from django.contrib.auth import login as login_auth ,logout as logout_auth
+from Menu.models import Catagory
 
 # Create your views here.
 def index(request):
-    return render(request, "index.html")
+    catagory = Catagory.objects.all()
+    return render(request, "index.html",{"catagories":catagory})
 
 def menu(request):
     return render(request, "menu.html")

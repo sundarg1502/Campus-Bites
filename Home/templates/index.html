@@ -17,22 +17,36 @@ Campus Bites - College Cafeteria
             <h1>Welcome to Campus Bites</h1>
             <p>Skip the lines, order ahead, and enjoy delicious meals from your college cafeteria. Fresh, fast, and convenient!</p>
             <button class="cta-button">Order Now</button>
-            <div class="menu-preview">
-                <div class="menu-item">
-                    <img src="/api/placeholder/200/150" alt="Today's Special">
-                    <h3>Today's Special</h3>
-                    <p>Grilled Chicken Bowl</p>
+        </div>
+    </section>
+    <section class="py-5 gradient-bg category" >
+        <div class="floating-items" id="floatingItems"></div>
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="mb-4">Explore Our Various Categories</h2>
+                {% comment %} <div class="d-flex justify-content-center flex-wrap gap-2">
+                    <a href="#" class="nav-pill active">All</a>
+                    <a href="#" class="nav-pill">Breakfast</a>
+                    <a href="#" class="nav-pill">Lunch</a>
+                    <a href="#" class="nav-pill">Dinner</a>
+                    <a href="#" class="nav-pill">Snacks</a>
+                </div> {% endcomment %}
+            </div>
+
+            <div class="masonry-grid">
+                <!-- Different sized images with dynamic content -->
+                {% for category in catagories %}
+                <a href="{% url "Menu:index" %}">
+                <div class="masonry-item">
+                    {% comment %} <span class="category-tag">Breakfast</span> {% endcomment %}
+                    <img src="{{category.img}}" alt="{{category.name}}">
+                    <div class="item-overlay">
+                        <h4>{{category.name}}</h4>
+                        <p>{{category.description}}</p>
+                    </div>
                 </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/200/150" alt="Student Favorite">
-                    <h3>Student Favorite</h3>
-                    <p>Veggie Buddha Bowl</p>
-                </div>
-                <div class="menu-item">
-                    <img src="/api/placeholder/200/150" alt="New Addition">
-                    <h3>New Addition</h3>
-                    <p>Poke Bowl</p>
-                </div>
+                </a>
+                {% endfor %}
             </div>
         </div>
     </section>

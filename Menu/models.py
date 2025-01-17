@@ -43,7 +43,7 @@ class Product(models.Model):
     trending = models.BooleanField(default=False)
     img = models.ImageField(upload_to=getFileName,null=True)
     actuall_price = models.IntegerField()
-    discount_price = models.DecimalField(max_digits=4,decimal_places=2)
+    discount_price = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
     catagory = models.ForeignKey(Catagory,on_delete=models.CASCADE)

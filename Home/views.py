@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from Home.forms import *
 from django.contrib import messages
+from django.contrib.auth import login as login_auth ,logout as logout_auth
 
 # Create your views here.
 def index(request):
@@ -21,6 +22,8 @@ def register(request):
         form = Register(request.POST)
         print(form.is_valid())
         if form.is_valid():
+            user_data = form.save(commit=False)
+            user_data.set_password(form.cleaned_data["password"])
             form.save()
             messages.success(request,"Registration Successfull Please Login to continue")
             return redirect('Home:login')
@@ -43,3 +46,7 @@ def login(request):
             print("valid")
         return render(request, "login.html",{'form':form})
     return render(request, "login.html")
+
+def logout(request):
+    logout_auth(request)
+    return redirect("Home:index")

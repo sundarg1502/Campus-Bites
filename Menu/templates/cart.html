@@ -1,0 +1,41 @@
+{% extends "includes/base.html" %}
+{% load static %}
+
+{% block title%}
+Campus Bites | Cart 
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href={% static "css/cart.css" %}>
+{% endblock %}
+
+{% block content %}
+<div class="floating-items" id="floatingItems"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Your Cart</h1>
+            <div class="cart-count">
+                <span id="itemCount">0 items</span>
+            </div>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically inserted here -->
+            
+        </div>
+
+        <div class="cart-summary">
+            <div class="total">
+                <span>Total</span>
+                <span id="totalAmount">$0.00</span>
+            </div>
+            <button class="checkout-btn" id="checkoutBtn">
+                Checkout (0 items)
+            </button>
+        </div>
+{% endblock %}
+
+{% block script %}
+<script src={% static "js/cart.js" %}></script>
+{% endblock %}

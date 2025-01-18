@@ -5,3 +5,6 @@ from Menu.models import Product
 def index(request):
     products = Product.objects.all()
     return render(request, "menu.html",{"products":products})
+
+def cart(request):
+    return render(request,'cart.html')

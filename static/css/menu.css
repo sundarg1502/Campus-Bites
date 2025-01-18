@@ -2,7 +2,14 @@
     --primary: #ff6b6b;
     --secondary: #4ecdc4;
     --dark: #2c3e50;
+    --light: #f7f7f7;
 }
+
+body {
+    background: linear-gradient(135deg, #ff6b6b0d, #4ecdc40d);
+    min-height: 100vh;
+}
+
 .floating-items {
     position: absolute;
     width: 100%;
@@ -16,66 +23,296 @@
     transform: rotate(var(--rotation));
 }
 
-.page-background {
-    background: linear-gradient(135deg, #ff6b6b11, #4ecdc411);
-    min-height: 100vh;
-    padding-top: 76px;
-}
 
-.filter-scroll {
-    overflow-x: auto;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-}
+/* .filter-container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+} */
 
-.filter-scroll::-webkit-scrollbar {
-    display: none;
-}
-
-.filter-btn {
-    border: 2px solid var(--primary);
-    color: var(--primary);
+/* .filter-tag {
+    display: inline-block;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    background: white;
+    border: 2px solid var(--secondary);
+    cursor: pointer;
     transition: all 0.3s;
-    margin: 0 5px;
-    min-width: max-content;
 }
 
-.filter-btn:hover,
-.filter-btn.active {
-    background-color: var(--primary) !important;
-    border-color: var(--primary) !important;
-    color: white !important;
+.filter-tag:hover {
+    background: var(--secondary);
+    color: white;
+} */
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-    transition: transform 0.3s, box-shadow 0.3s;
-    opacity: 0;
-    transform: translateY(30px);
-}
-
-.card:hover {
+.product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
-.card-img-top {
+.product-image {
+    position: relative;
+    overflow: hidden;
     height: 200px;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 0.5s;
 }
 
-.category-stats {
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-type-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--secondary);
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-weight: 500;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-price {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #999;
+}
+
+.discounted-price {
+    color: var(--primary);
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+/* .nutrition-info {
+    background: var(--light);
+    padding: 15px;
+    border-radius: 10px;
+    margin: 15px 0;
+} */
+
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.nutrition-item {
+    text-align: center;
+    padding: 5px;
+    background: white;
+    border-radius: 8px;
+}
+
+.cart-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--light);
+    padding: 5px 15px;
+    border-radius: 25px;
+}
+
+.quantity-btn {
+    background: var(--secondary);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.quantity-btn:hover {
+    transform: scale(1.1);
+}
+
+.quantity-input {
+    width: 40px;
+    text-align: center;
+    border: none;
+    background: transparent;
+    font-weight: bold;
+}
+
+.add-to-cart-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s;
+    flex-grow: 1;
+}
+
+.add-to-cart-btn:hover {
+    background: #ff5252;
+    transform: translateX(5px);
+}
+
+.success-animation {
+    background: var(--secondary) !important;
+}
+.filter-container {
+    background: var(--dark);
+    padding: 30px;
+    border-radius: 20px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.filter-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.filter-label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    background: var(--dark);
+    padding: 0 10px;
+    color: var(--light);
     font-size: 0.9rem;
-    color: #666;
+    border-radius: 10px;
 }
 
-.btn-view-category {
-    background-color: var(--secondary);
-    border-color: var(--secondary);
-    transition: background-color 0.3s;
+.filter-select {
+    appearance: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--secondary);
+    border-radius: 25px;
+    color: white;
+    padding: 12px 20px;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-.btn-view-category:hover {
-    background-color: #3dbeb6;
-    border-color: #3dbeb6;
+.filter-select:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.filter-select option {
+    background: var(--dark);
+    color: white;
+}
+
+.filter-group::after {
+    content: '▼';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--secondary);
+    pointer-events: none;
+}
+
+/* Product card styles for Veg/Non-veg themes */
+.product-card.veg {
+    border-top: 4px solid var(--secondary);
+}
+
+.product-card.non-veg {
+    border-top: 4px solid var(--primary);
+}
+
+.product-card.veg .product-type-badge {
+    background: var(--secondary);
+}
+
+.product-card.non-veg .product-type-badge {
+    background: var(--primary);
+}
+
+.nutrition-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    padding: 20px;
+    border-radius: 15px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.product-info:hover .nutrition-info {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-card.veg .nutrition-info {
+    border-left: 4px solid var(--secondary);
+}
+
+.product-card.non-veg .nutrition-info {
+    border-left: 4px solid var(--primary);
+}
+
+.nutrition-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.nutrition-item {
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.product-card.veg .nutrition-item {
+    background: rgba(78, 205, 196, 0.1);
+}
+
+.product-card.non-veg .nutrition-item {
+    background: rgba(255, 107, 107, 0.1);
+}
+
+.nutrition-item:hover {
+    transform: scale(1.05);
 }

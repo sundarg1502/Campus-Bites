@@ -12,7 +12,30 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href={% static 'css/header.css' %}>
     <link rel="stylesheet" href={% static 'css/footer.css' %}>
+    <style>
+        .floating-cart {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
 
+        .floating-cart:hover {
+            transform: scale(1.1);
+        }
+    </style>
     {% block css%}
     {% endblock %}
 </head>
@@ -22,6 +45,8 @@
 
 {% block content %}
 {% endblock%}
+
+<div class="floating-cart"><a href="{% url "Menu:cart" %}" style="text-decoration:none">🛒</a></div>
 
 {% include "includes/footer.html" %}
 

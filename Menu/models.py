@@ -54,4 +54,6 @@ class Product(models.Model):
     
 class Cart(models.Model):
     name = models.CharField(max_length=25)
-    
+    quantity = models.IntegerField()
+    price = models.IntegerField()
+    status = models.BooleanField(default=True)

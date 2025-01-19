@@ -68,10 +68,10 @@ Campus bites - Menu
         {% if item.label == "Non-Veg" %}
         <!-- Product 1 -->
         <div class="col-md-6 col-lg-4">
-            <div class="product-card non-veg" data-product-id="1">
+            <div class="product-card non-veg" data-product-id="{{item.id}}">
                 <div class="product-image">
                     <img src={{item.img|default:"static/images/Others/snacks.jpg"}} alt="{{item.name}}">
-                    <div class="product-type-badge">Non-Veg</div>
+                    <div class="product-type-badge">Non-Veg{{item.id}}</div>
                 </div>
                 <div class="product-info">
                     <h4>{{item.name}}</h4>
@@ -103,11 +103,11 @@ Campus bites - Menu
                     </div>
                     <div class="cart-controls">
                         <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="updateQuantity(1, -1)">-</button>
-                            <input type="text" class="quantity-input" value="0" readonly data-product-id="1">
-                            <button class="quantity-btn plus" onclick="updateQuantity(1, 1)">+</button>
+                            <button class="quantity-btn minus" onclick="updateQuantity({{item.id}}, -1)">-</button>
+                            <input type="text" class="quantity-input" value="0" readonly data-product-id="{{item.id}}">
+                            <button class="quantity-btn plus" onclick="updateQuantity({{item.id}}, 1)">+</button>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(1)">
+                        <button class="add-to-cart-btn" onclick="addToCart({{item.id}})">
                             <i class="fas fa-cart-plus me-2"></i>Add to Cart
                         </button>
                     </div>
@@ -117,10 +117,10 @@ Campus bites - Menu
         {% else %}
         <!-- Product 2 -->
         <div class="col-md-6 col-lg-4">
-            <div class="product-card veg" data-product-id="2">
+            <div class="product-card veg" data-product-id="{{item.id}}">
                 <div class="product-image">
                     <img src={{item.img|default:"static/images/Others/snacks.jpg"}} alt="{{item.name}}">
-                    <div class="product-type-badge">Veg</div>
+                    <div class="product-type-badge">Veg {{item.id}}</div>
                 </div>
                 <div class="product-info">
                     <h4>{{item.name}}</h4>
@@ -152,11 +152,11 @@ Campus bites - Menu
                     </div>
                     <div class="cart-controls">
                         <div class="quantity-controls">
-                            <button class="quantity-btn minus" onclick="updateQuantity(2, -1)">-</button>
-                            <input type="text" class="quantity-input" value="0" readonly data-product-id="2">
-                            <button class="quantity-btn plus" onclick="updateQuantity(2, 1)">+</button>
+                            <button class="quantity-btn minus" onclick="updateQuantity({{item.id}}, -1)">-</button>
+                            <input type="text" class="quantity-input" value="0" readonly data-product-id="{{item.id}}">
+                            <button class="quantity-btn plus" onclick="updateQuantity({{item.id}}, 1)">+</button>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart(2)">
+                        <button class="add-to-cart-btn" onclick="addToCart({{item.id}})">
                             <i class="fas fa-cart-plus me-2"></i>Add to Cart
                         </button>
                     </div>

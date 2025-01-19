@@ -16,26 +16,134 @@ Campus Bites | Cart
         <div class="header">
             <h1>Your Cart</h1>
             <div class="cart-count">
-                <span id="itemCount">0 items</span>
+                <span id="itemCount">2 items</span>
             </div>
         </div>
 
         <div class="cart-items" id="cartItems">
-            <!-- Cart items will be dynamically inserted here -->
-            
+            <!-- Static Product 1 -->
+            <div class="cart-item" data-id="1">
+                <div class="item-details">
+                    <h3>Pizza Margherita</h3>
+                    <div class="item-price">$12.99</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus" onclick="updateQuantity(1, -1)">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn plus" onclick="updateQuantity(1, 1)">+</button>
+                    <div class="subtotal">$12.99</div>
+                    <button class="remove-btn" onclick="removeItem(1)">×</button>
+                </div>
+            </div>
+
+            <!-- Static Product 2 -->
+            <div class="cart-item" data-id="2">
+                <div class="item-details">
+                    <h3>Chicken Burger</h3>
+                    <div class="item-price">$8.99</div>
+                </div>
+                <div class="quantity-controls">
+                    <button class="quantity-btn minus" onclick="updateQuantity(2, -1)">-</button>
+                    <span class="quantity">1</span>
+                    <button class="quantity-btn plus" onclick="updateQuantity(2, 1)">+</button>
+                    <div class="subtotal">$8.99</div>
+                    <button class="remove-btn" onclick="removeItem(2)">×</button>
+                </div>
+            </div>
         </div>
 
         <div class="cart-summary">
             <div class="total">
                 <span>Total</span>
-                <span id="totalAmount">$0.00</span>
+                <span id="totalAmount">$21.98</span>
             </div>
             <button class="checkout-btn" id="checkoutBtn">
-                Checkout (0 items)
+                Checkout (2 items)
             </button>
         </div>
+    </div>
 {% endblock %}
 
 {% block script %}
 <script src={% static "js/cart.js" %}></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize floating food items
+    const foodEmojis = ['🍕', '🍔', '🍟', '🌮', '🥗', '🍜', '☕'];
+    const floatingItems = document.getElementById('floatingItems');
+    
+    for (let i = 0; i < 20; i++) {
+        const item = document.createElement('div');
+        item.className = 'floating-item';
+        item.textContent = foodEmojis[Math.floor(Math.random() * foodEmojis.length)];
+        item.style.setProperty('--rotation', `${Math.random() * 360}deg`);
+        item.style.left = `${Math.random() * 100}%`;
+        item.style.top = `${Math.random() * 100}%`;
+        item.style.fontSize = `${Math.random() * 30 + 20}px`;
+        floatingItems.appendChild(item);
+        
+        // Random floating animation
+        gsap.to(item, {
+            y: `${Math.random() * 100 - 50}px`,
+            x: `${Math.random() * 100 - 50}px`,
+            rotation: `${Math.random() * 360}deg`,
+            duration: Math.random() * 5 + 5,
+            repeat: -1,
+            yoyo: true,
+            ease: 'none'
+        });
+    }
+
+    // Cart functionality
+    function updateQuantity(id, change) {
+        const cartItem = document.querySelector(`.cart-item[data-id="${id}"]`);
+        const quantityElement = cartItem.querySelector('.quantity');
+        const priceElement = cartItem.querySelector('.item-price');
+        const subtotalElement = cartItem.querySelector('.subtotal');
+        
+        let quantity = parseInt(quantityElement.textContent);
+        const price = parseFloat(priceElement.textContent.replace('$', ''));
+        
+        quantity = Math.max(1, quantity + change);
+        quantityElement.textContent = quantity;
+        subtotalElement.textContent = `$${(price * quantity).toFixed(2)}`;
+        
+        updateTotals();
+    }
+
+    function removeItem(id) {
+        const cartItem = document.querySelector(`.cart-item[data-id="${id}"]`);
+        cartItem.remove();
+        updateTotals();
+    }
+
+    function updateTotals() {
+        const cartItems = document.querySelectorAll('.cart-item');
+        let totalQuantity = 0;
+        let totalAmount = 0;
+
+        cartItems.forEach(item => {
+            const quantity = parseInt(item.querySelector('.quantity').textContent);
+            const subtotal = parseFloat(item.querySelector('.subtotal').textContent.replace('$', ''));
+            
+            totalQuantity += quantity;
+            totalAmount += subtotal;
+        });
+
+        document.getElementById('itemCount').textContent = `${totalQuantity} items`;
+        document.getElementById('totalAmount').textContent = `$${totalAmount.toFixed(2)}`;
+        document.getElementById('checkoutBtn').textContent = `Checkout (${totalQuantity} items)`;
+    }
+
+    // Checkout button click handler
+    document.getElementById('checkoutBtn').addEventListener('click', () => {
+        const cartItems = document.querySelectorAll('.cart-item');
+        if (cartItems.length === 0) {
+            alert('Your cart is empty!');
+        } else {
+            alert('Proceeding to checkout...');
+        }
+    });
+});
+</script>
 {% endblock %}

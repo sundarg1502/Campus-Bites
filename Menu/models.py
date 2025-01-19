@@ -53,7 +53,8 @@ class Product(models.Model):
         return self.name
     
 class Cart(models.Model):
-    name = models.CharField(max_length=25)
+    name = models.ForeignKey(Product,on_delete=models.CASCADE)
     quantity = models.IntegerField()
     price = models.IntegerField()
-    status = models.BooleanField(default=True)
+    total = models.IntegerField()
+    status = models.BooleanField(default=False)

@@ -107,7 +107,7 @@ Campus bites - Menu
                             <input type="text" class="quantity-input" value="0" readonly data-product-id="{{item.id}}">
                             <button class="quantity-btn plus" onclick="updateQuantity({{item.id}}, 1)">+</button>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart({{item.id}})">
+                        <button class="add-to-cart-btn" id="{{item.id}}" onclick="addToCart({{item.id}})">
                             <i class="fas fa-cart-plus me-2"></i>Add to Cart
                         </button>
                     </div>
@@ -156,7 +156,7 @@ Campus bites - Menu
                             <input type="text" class="quantity-input" value="0" readonly data-product-id="{{item.id}}">
                             <button class="quantity-btn plus" onclick="updateQuantity({{item.id}}, 1)">+</button>
                         </div>
-                        <button class="add-to-cart-btn" onclick="addToCart({{item.id}})">
+                        <button class="add-to-cart-btn" id="addtocart{{item.id}}" onclick="addToCart({{item.id}},{{item}})">
                             <i class="fas fa-cart-plus me-2"></i>Add to Cart
                         </button>
                     </div>

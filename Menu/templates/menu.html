@@ -64,17 +64,19 @@ Campus bites - Menu
 
     <!-- Product Grid -->
     <div class="row" id="productGrid">
+        <h1 hidden id="addtocarturl">{% url "Menu:addtocart" %}</h1>
         {% for item in products %}
         {% if item.label == "Non-Veg" %}
         <!-- Product 1 -->
         <div class="col-md-6 col-lg-4">
             <div class="product-card non-veg" data-product-id="{{item.id}}">
+                <input hidden value={{itemid}} id="hidden-id{{item.id}}">
                 <div class="product-image">
                     <img src={{item.img|default:"static/images/Others/snacks.jpg"}} alt="{{item.name}}">
                     <div class="product-type-badge">Non-Veg{{item.id}}</div>
                 </div>
                 <div class="product-info">
-                    <h4>{{item.name}}</h4>
+                    <h4 id="name{{item.id}}">{{item.name}}</h4>
                     <p>{{item.description}}</p>
                     <div class="product-price">
                         <span class="original-price">{{item.actuall_price}} RS.</span>
@@ -117,17 +119,18 @@ Campus bites - Menu
         {% else %}
         <!-- Product 2 -->
         <div class="col-md-6 col-lg-4">
-            <div class="product-card veg" data-product-id="{{item.id}}">
+            <div class="product-card veg" data-product-id="{{item}}">
+                <h4 id="hiddenid{{item.id}}" hidden>{{item.id}}</h4>
                 <div class="product-image">
                     <img src={{item.img|default:"static/images/Others/snacks.jpg"}} alt="{{item.name}}">
                     <div class="product-type-badge">Veg {{item.id}}</div>
                 </div>
                 <div class="product-info">
-                    <h4>{{item.name}}</h4>
+                    <h4 id="name{{item.id}}">{{item.name}}</h4>
                     <p>{{item.description}}</p>
                     <div class="product-price">
                         <span class="original-price">{{item.actuall_price}} RS.</span>
-                        <span class="discounted-price">{{item.discount_price}} RS.</span>
+                        <span class="discounted-price" id="discount-price{{item.id}}">{{item.discount_price}} RS.</span>
                     </div>
                     <div class="nutrition-info">
                         <h6 class="mb-3">Nutrition Information</h6>
@@ -156,7 +159,7 @@ Campus bites - Menu
                             <input type="text" class="quantity-input" value="0" readonly data-product-id="{{item.id}}">
                             <button class="quantity-btn plus" onclick="updateQuantity({{item.id}}, 1)">+</button>
                         </div>
-                        <button class="add-to-cart-btn" id="addtocart{{item.id}}" onclick="addToCart({{item.id}},{{item}})">
+                        <button class="add-to-cart-btn" id="addtocart{{item.id}}" onclick="addToCart({{item.id}})">
                             <i class="fas fa-cart-plus me-2"></i>Add to Cart
                         </button>
                     </div>

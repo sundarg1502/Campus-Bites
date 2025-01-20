@@ -5,5 +5,6 @@ app_name = "Menu"
 
 urlpatterns = [
     path("",views.index,name='index'),
-    path("/cart",views.cart,name='cart')
+    path("/cart",views.cart,name='cart'),
+    path("/addtocart",views.addtocart,name='addtocart'),
 ]

@@ -37,23 +37,32 @@ function updateQuantity(productId, change) {
 // }
     function addToCart(productId) {
         // Gather form data
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
+        const name = document.getElementById("name"+productId).textContent;
+        const id = document.getElementById("hiddenid"+productId).textContent;
+        const price = document.getElementById("discount-price"+productId).textContent;
+        const qty = document.querySelector(`input[data-product-id="${productId}"]`).value;
+        const url = document.getElementById("addtocarturl").textContent;
+        console.log(url)
+        // console.log("name"+productId)
+        // console.log(id )
+        // console.log(id)
+        // console.log(price);
+        // console.log("quantity"+qty);
 
         // Check if form inputs are valid
-        if (!name || !email) {
-            alert("Please fill in all fields.");
-            return;
-        }
+        // if (!name || !email) {
+        //     alert("Please fill in all fields.");
+        //     return;
+        // }
 
-        // Make the fetch call
-        fetch("/your-django-endpoint/", {
+        // // Make the fetch call
+        fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": getCookie('csrftoken'), // CSRF token for security
             },
-            body: JSON.stringify({ name: name, email: email }),
+            body: JSON.stringify({ id: id, qty: qty, price:price }),
         })
         .then(response => {
             if (response.ok) {

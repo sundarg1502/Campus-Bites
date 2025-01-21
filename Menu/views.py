@@ -9,7 +9,11 @@ def index(request):
     return render(request, "menu.html",{"products":products})
 
 def cart(request):
-    return render(request,'cart.html')
+    print(request.user)
+    cart = Cart.objects.filter(user=request.user.id)
+    # for data in cart:
+    #     print(data)
+    return render(request,'cart.html',{"items":cart})
 
 def addtocart(request):
     if request.user.is_authenticated:

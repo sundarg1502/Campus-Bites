@@ -22,40 +22,27 @@ Campus Bites | Cart
 
         <div class="cart-items" id="cartItems">
             <!-- Static Product 1 -->
+             {% for item in items %}
             <div class="cart-item" data-id="1">
                 <div class="item-details">
-                    <h3>Pizza Margherita</h3>
-                    <div class="item-price">$12.99</div>
+                    <h3>{{item.product.name}}</h3>
+                    <div class="item-price" id="price">{{item.product.actuall_price}}</div>
                 </div>
                 <div class="quantity-controls">
                     <button class="quantity-btn minus" onclick="updateQuantity(1, -1)">-</button>
-                    <span class="quantity">1</span>
+                    <input class="quantity" id="item1" value="{{item.quantity}}" readonly></span>
                     <button class="quantity-btn plus" onclick="updateQuantity(1, 1)">+</button>
-                    <div class="subtotal">$12.99</div>
+                    <div class="subtotal" id="sub">{{item.}}</div><span> RS.</span>
                     <button class="remove-btn" onclick="removeItem(1)">×</button>
                 </div>
-            </div>
-
-            <!-- Static Product 2 -->
-            <div class="cart-item" data-id="2">
-                <div class="item-details">
-                    <h3>Chicken Burger</h3>
-                    <div class="item-price">$8.99</div>
-                </div>
-                <div class="quantity-controls">
-                    <button class="quantity-btn minus" onclick="updateQuantity(2, -1)">-</button>
-                    <span class="quantity">1</span>
-                    <button class="quantity-btn plus" onclick="updateQuantity(2, 1)">+</button>
-                    <div class="subtotal">$8.99</div>
-                    <button class="remove-btn" onclick="removeItem(2)">×</button>
-                </div>
-            </div>
+            </div> 
+            {% endfor %}
         </div>
 
         <div class="cart-summary">
             <div class="total">
                 <span>Total</span>
-                <span id="totalAmount">$21.98</span>
+                <span id="totalAmount">21.98</span>
             </div>
             <button class="checkout-btn" id="checkoutBtn">
                 Checkout (2 items)

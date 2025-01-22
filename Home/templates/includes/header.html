@@ -17,10 +17,10 @@
                 </li>
                 {% if request.user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-cart3"></i> Orders</a>
+                    <a class="nav-link" href="{% url "Menu:cart" %}"><i class="bi bi-cart3"></i> Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="#"><i class="bi bi-person-circle"></i> {{user.username}}</a>
+                    <a class="nav-link active" href="{%  url "Home:profile" %}"><i class="bi bi-person-circle"></i> {{user.username}}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="{% url "Home:logout" %}"><i class="bi bi-box-arrow-right"></i> Logout</a>

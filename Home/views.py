@@ -52,3 +52,7 @@ def login(request):
 def logout(request):
     logout_auth(request)
     return redirect("Home:index")
+
+
+def profile(request):
+    return render(request, "profile.html")

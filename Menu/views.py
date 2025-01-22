@@ -12,10 +12,12 @@ def cart(request):
     print(request.user)
     cart = Cart.objects.filter(user=request.user.id)
     total = 0
+    count= 0
     for data in cart:
-        total+=data.product.actuall_price*data.quantity
+        count+=1
+        total+=data.product.discount_price*data.quantity
     print(total)
-    return render(request,'cart.html',{"items":cart,"total":total})
+    return render(request,'cart.html',{"items":cart,"total":total,"count":count})
 
 def addtocart(request):
     if request.user.is_authenticated:

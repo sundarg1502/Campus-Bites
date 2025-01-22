@@ -11,15 +11,17 @@ def index(request):
 def cart(request):
     print(request.user)
     cart = Cart.objects.filter(user=request.user.id)
-    # for data in cart:
-    #     print(data)
-    return render(request,'cart.html',{"items":cart})
+    total = 0
+    for data in cart:
+        total+=data.product.actuall_price*data.quantity
+    print(total)
+    return render(request,'cart.html',{"items":cart,"total":total})
 
 def addtocart(request):
     if request.user.is_authenticated:
         data = json.load(request)
         pid = Product.objects.get(pk=data['id'])
-        Cart.objects.create(product=pid,user=request.user,quantity=data['qty'])
+        Cart.objects.create(product=pid,user=request.user,quantity=data['qty'],amount=data["amount"])
         return JsonResponse({"Ststus":'Successs'},status=200)
     else:
         return JsonResponse({"status":"User Login Required"},status=200)

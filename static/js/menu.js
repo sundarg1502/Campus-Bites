@@ -42,7 +42,8 @@ function updateQuantity(productId, change) {
         const price = document.getElementById("discount-price"+productId).textContent;
         const qty = document.querySelector(`input[data-product-id="${productId}"]`).value;
         const url = document.getElementById("addtocarturl").textContent;
-        console.log(url)
+        const amount = parseInt(price.split("RS."))*parseInt(qty);
+        console.log(amount)
         // console.log("name"+productId)
         // console.log(id )
         // console.log(id)
@@ -62,7 +63,7 @@ function updateQuantity(productId, change) {
                 "Content-Type": "application/json",
                 "X-CSRFToken": getCookie('csrftoken'), // CSRF token for security
             },
-            body: JSON.stringify({ id: id, qty: qty, price:price }),
+            body: JSON.stringify({ id: id, qty: qty, price:price,amount:amount }),
         })
         .then(response => {
             if (response.ok) {

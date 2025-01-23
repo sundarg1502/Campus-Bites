@@ -33,7 +33,7 @@ Campus Bites | Cart
                     <input class="quantity" id="item{{item.id}}" value="{{item.quantity}}" readonly></span>
                     <button class="quantity-btn plus" onclick="updateQuantity({{item.id}}, 1)">+</button>
                     <div class="subtotal" id="sub{{item.id}}">{{item.amount}}</div><span> RS.</span>
-                    <button class="remove-btn" onclick="removeItem(1)">×</button>
+                    <button class="remove-btn" onclick="removeItem({{item.id}})">×</button>
                 </div>
             </div> 
             {% endfor %}
@@ -44,9 +44,9 @@ Campus Bites | Cart
                 <span>Total</span>
                 <h3 id="totalAmount">{{total}}</h3>
             </div>
-            <button class="checkout-btn" id="checkoutBtn">
+            <a class="checkout-btn" id="checkoutBtn" href="{% url "Menu:payment" %}">
                 Checkout ({{count}} items)
-            </button>
+            </a>
         </div>
     </div>
 {% endblock %}
@@ -121,16 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('totalAmount').textContent = `$${totalAmount.toFixed(2)}`;
         document.getElementById('checkoutBtn').textContent = `Checkout (${totalQuantity} items)`;
     }
-
-    // Checkout button click handler
-    document.getElementById('checkoutBtn').addEventListener('click', () => {
-        const cartItems = document.querySelectorAll('.cart-item');
-        if (cartItems.length === 0) {
-            alert('Your cart is empty!');
-        } else {
-            alert('Proceeding to checkout...');
-        }
-    });
 });
 </script>
 {% endblock %}

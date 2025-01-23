@@ -6,13 +6,171 @@ Campus Bites | Payment Page
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href={% static "css/payment.css" %}>
+<link rel="stylesheet" href={% static "css/paymrnt.css" %}>
 {% endblock %}
 
 {% block content %}
+<div class="page-background">
+    <div class="container">
+        <div class="row">
+            <!-- Payment Details -->
+            <div class="col-lg-8 mb-4">
+                <div class="payment-card p-4">
+                    <h2 class="mb-4">Payment Details</h2>
+                    
+                    <!-- Payment Methods -->
+                    <div class="mb-4">
+                        <h5 class="mb-3">Select Payment Method</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="payment-method-card selected">
+                                    <i class="fab fa-cc-visa payment-icon text-primary"></i>
+                                    <h6 class="mb-1">Credit/Debit Card</h6>
+                                    <small class="text-muted">Visa, Mastercard, etc.</small>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="payment-method-card">
+                                    <i class="fas fa-wallet payment-icon text-success"></i>
+                                    <h6 class="mb-1">Campus Wallet</h6>
+                                    <small class="text-muted">Pay with meal points</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Credit Card Form -->
+                    <form id="payment-form">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label class="form-label">Card Number</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456">
+                                    <span class="input-group-text">
+                                        <i class="fab fa-cc-visa"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Expiry Date</label>
+                                <input type="text" class="form-control" placeholder="MM/YY">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">CVV</label>
+                                <input type="text" class="form-control" placeholder="123">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Name on Card</label>
+                                <input type="text" class="form-control" placeholder="John Doe">
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- Delivery Details -->
+                        <h5 class="mb-3">Delivery Details</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Pickup Time</label>
+                                <select class="form-select">
+                                    <option>As soon as possible</option>
+                                    <option>In 30 minutes</option>
+                                    <option>In 1 hour</option>
+                                    <option>Schedule for later</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Pickup Location</label>
+                                <select class="form-select">
+                                    <option>Main Cafeteria</option>
+                                    <option>Science Building Café</option>
+                                    <option>Library Coffee Shop</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Special Instructions</label>
+                                <textarea class="form-control" rows="2" placeholder="Any special requests or dietary requirements?"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Order Summary -->
+            <div class="col-lg-4">
+                <div class="payment-card p-4">
+                    <h4 class="mb-4">Order Summary</h4>
+                    <div class="order-summary">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Grilled Chicken Bowl</span>
+                            <span>$12.99</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Green Smoothie</span>
+                            <span>$5.99</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Cookie</span>
+                            <span>$2.49</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Subtotal</span>
+                            <span>$21.47</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Tax</span>
+                            <span>$1.93</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-success">Student Discount</span>
+                            <span class="text-success">-$2.15</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="d-flex justify-content-between mb-3">
+                            <strong>Total</strong>
+                            <strong>$21.25</strong>
+                        </div>
+                        <button class="btn btn-primary-custom w-100 py-2">
+                            Complete Payment
+                        </button>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="d-flex align-items-center mb-3">
+                            <i class="fas fa-shield-alt text-success me-2"></i>
+                            <small>Secure Payment Processing</small>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <i class="fas fa-undo text-success me-2"></i>
+                            <small>Free cancellation before preparation</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block script %}
+<script>
+    // Animation for payment cards
+    gsap.to('.payment-card', {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out"
+    });
 
+    // Payment method selection
+    const paymentMethods = document.querySelectorAll('.payment-method-card');
+    paymentMethods.forEach(method => {
+        method.addEventListener('click', () => {
+            paymentMethods.forEach(m => m.classList.remove('selected'));
+            method.classList.add('selected');
+        });
+    });
+</script>
 {% endblock %}

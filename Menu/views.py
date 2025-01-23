@@ -27,3 +27,6 @@ def addtocart(request):
         return JsonResponse({"Ststus":'Successs'},status=200)
     else:
         return JsonResponse({"status":"User Login Required"},status=200)
+    
+def payment(request):
+    return render(request, "payment.html")

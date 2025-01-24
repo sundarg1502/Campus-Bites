@@ -18,11 +18,9 @@ Campus bites - Menu
                     <span class="filter-label">Category</span>
                     <select class="filter-select">
                         <option value="">All Categories</option>
-                        <option value="main">Main Course</option>
-                        <option value="appetizer">Appetizers</option>
-                        <option value="salad">Salads</option>
-                        <option value="dessert">Desserts</option>
-                        <option value="beverage">Beverages</option>
+                        {% for item in category %}
+                        <option value="{{item.name}}">{{item.name}}</option>
+                        {% endfor %}
                     </select>
                 </div>
             </div>
@@ -33,7 +31,6 @@ Campus bites - Menu
                         <option value="">All Types</option>
                         <option value="veg">Vegetarian</option>
                         <option value="non-veg">Non-Vegetarian</option>
-                        <option value="vegan">Vegan</option>
                     </select>
                 </div>
             </div>
@@ -55,7 +52,7 @@ Campus bites - Menu
                         <option value="popular">Most Popular</option>
                         <option value="price-low">Price: Low to High</option>
                         <option value="price-high">Price: High to Low</option>
-                        <option value="rating">Customer Rating</option>
+                        {% comment %} <option value="rating">Customer Rating</option> {% endcomment %}
                     </select>
                 </div>
             </div>

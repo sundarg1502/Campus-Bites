@@ -1,12 +1,13 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from Menu.models import Product,Cart
+from Menu.models import Product,Cart,Catagory
 import json
 
 # Create your views here.
 def index(request):
     products = Product.objects.all()
-    return render(request, "menu.html",{"products":products})
+    category = Catagory.objects.all()
+    return render(request, "menu.html",{"products":products,"category":category})
 
 def cart(request):
     print(request.user)

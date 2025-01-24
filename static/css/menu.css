@@ -5,10 +5,7 @@
     --light: #f7f7f7;
 }
 
-body {
-    background: linear-gradient(135deg, #ff6b6b0d, #4ecdc40d);
-    min-height: 100vh;
-}
+
 
 .floating-items {
     position: absolute;
@@ -196,7 +193,7 @@ body {
     background: var(--dark);
     padding: 30px;
     border-radius: 20px;
-    margin: 20px 0;
+    margin: 70px 0 20px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 

@@ -27,7 +27,7 @@ Campus bites - Menu
             <div class="col-md-3">
                 <div class="filter-group">
                     <span class="filter-label">Dietary Type</span>
-                    <select class="filter-select">
+                    <select class="filter-select" id="diet">
                         <option value="">All Types</option>
                         <option value="veg">Vegetarian</option>
                         <option value="non-veg">Non-Vegetarian</option>
@@ -172,4 +172,25 @@ Campus bites - Menu
 
 {% block script %}
 <script src={% static "js/menu.js" %}></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#category,#diet').change(function (){
+            const cat = document.getElementById('category').value;
+            const diet = document.getElementById('diet').value;
+            console.log(cat)
+            console.log(diet)
+            $.ajax({
+                   url : '',
+                    data : {category:cat,diet:diet},
+                     success:function(response){
+                         $('#toAdd').val(response.add);
+                        $('#gstno').val(response.gst);
+                    }
+                });
+        });
+    });
+</script>
 {% endblock %}

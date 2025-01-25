@@ -95,3 +95,4 @@ function updateQuantity(productId, change) {
         }
         return cookieValue;
     }
+

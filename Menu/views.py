@@ -5,6 +5,11 @@ import json
 
 # Create your views here.
 def index(request):
+    print(request.POST.GET.get("catgory"))
+    if request.method == "POST":
+        data = request.POST
+        print("function called")
+        print(data)
     products = Product.objects.all()
     category = Catagory.objects.all()
     return render(request, "menu.html",{"products":products,"category":category})
